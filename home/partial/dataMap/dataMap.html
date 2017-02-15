@@ -1,0 +1,100 @@
+<div id="palette" class="col-md-12" ng-controller="DatamapCtrl" style="padding-bottom: 15px;">
+    <div class="col-md-12" align="center">
+        <img src="../../../assets/images/smartCitiesLogo.png" style="text-align: center">
+    </div>
+    <br>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#charging_stations">Chargung Stations</a></li>
+        <li><a data-toggle="tab" href="#realtime_demand">Realtime Demand</a></li>
+        <li><a data-toggle="tab" href="#emissions_utilities">Emissions and Utilities</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="charging_stations" class="tab-pane fade in active">
+            <div class="col-md-8">
+                <div class="col-md-3">
+                    <input type="checkbox" ng-click="changeDataPointModel('commute_routes')" ng-model="mapCheckBoxes.commute_routes">&nbsp;Commute Routes
+                </div>
+                <div class="col-md-3">
+                    <input type="checkbox" ng-click="changeDataPointModel('service_stations')" ng-model="mapCheckBoxes.service_stations">&nbsp;Service Stations
+                </div>
+                <div class="col-md-3">
+                    <input type="checkbox" ng-click="changeDataPointModel('stops_lt_30')" ng-model="mapCheckBoxes.stops_lt_30">&nbsp; Stops <30
+                </div>
+                <div class="col-md-3">
+                    <input type="checkbox" ng-click="changeDataPointModel('parking')" ng-model="mapCheckBoxes.parking">&nbsp; Parking
+                </div>
+                <div class="col-md-3">
+                    <input type="checkbox" ng-click="changeDataPointModel('existing_chargers')" ng-model="mapCheckBoxes.existing_chargers">&nbsp; Existing Chargers
+                </div>
+                <div class="col-md-3">
+                    <input type="checkbox" ng-click="changeDataPointModel('poi')" ng-model="mapCheckBoxes.poi">&nbsp; Points of Interest
+                </div>
+                <div class="col-md-3">
+                    <input type="checkbox" ng-click="changeDataPointModel('stops_gt_30')" ng-model="mapCheckBoxes.stops_gt_30">&nbsp; Stops >30
+                </div>
+                <div class="col-md-3">
+                    <input type="checkbox" ng-click="changeDataPointModel('sugg_char_station_location')" ng-model="mapCheckBoxes.sugg_char_station_location">&nbsp; Suggested Charging Station Locations
+                </div>
+            </div>
+            <div class="col-md-4">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation"><a href="#realtime" aria-controls="#realtime" role="tab" data-toggle="tab">Realtime</a></li>
+                    <li role="presentation"><a href="#future" aria-controls="#future" role="tab" data-toggle="tab">Future</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="realtime">
+                        <div class="col-md-5">
+                            <input type="radio" value=""> &nbsp; Work Week
+                        </div>
+                        <div class="col-md-4">
+                            <input type="radio" value="">&nbsp; Weekend
+                        </div>
+                        <div class="col-md-3">
+                            <input type="radio" value="">&nbsp; Both
+                        </div>
+                        <br>
+                        <div style="margin-top: 10px;">
+                            <div class="row">
+                                <div align="right" style="padding: 15px">
+                                    <div align="left">
+                                        <div class="dropdown">
+                                            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Select One
+                                                <span class="caret"></span></button>
+                                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Morning Commute</a></li>
+                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Evening Rush</a></li>
+                                                <li role="presentation" class="divider"></li>
+                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Help <span class="glyphicon glyphicon-question-sign"></span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <a type="button" class="btn btn-success btn-xs" href="#">Save As</a>
+                                    <a type="button" class="btn btn-danger btn-xs" href="#">Reset</a>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade in active" id="future">
+                        <div class="container">
+                            test
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" style="margin-top: 10px;">
+                <img src="../../../assets/images/u2.jpg" width="100%">
+            </div>
+        </div>
+        <div id="realtime_demand" class="tab-pane fade">
+            <h3>Menu 1</h3>
+            <p>Some content in menu 1.</p>
+        </div>
+        <div id="emissions_utilities" class="tab-pane fade">
+            <h3>Menu 2</h3>
+            <p>Some content in menu 2.</p>
+        </div>
+    </div>
+</div>

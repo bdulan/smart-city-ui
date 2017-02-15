@@ -1,0 +1,105 @@
+@import "../../bower_components/bootstrap/less/bootstrap.less";
+//@import "bower_components/bootstrap/less/theme.less";
+@import "../../bower_components/font-awesome/less/font-awesome.less";
+@fa-font-path: "bower_components/font-awesome/fonts";
+@import url(http://fonts.googleapis.com/css?family=Poiret+One|Varela+Round);
+
+/* Component LESS */
+@import "../../home/home.less";
+@import "../../directive/sidebar/sidebar.less";
+/* Add Component LESS Above */
+
+/* Required for Angular UI Bootstrap */
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+body {
+    background-image: url("../images/SC_bg_02.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#palette {
+    min-height: 750px;
+    background: rgba(255,255,255,.75);
+    margin-top: 25px;
+    border: solid #E5E5E5 3px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 5px #888888;
+}
+
+
+
+.toggle {
+    text-decoration: none;
+    font-size: 2em;
+    color: rgba(0, 0, 0, 0.61);
+    -webkit-transition: all 0.15s ease-out 0;
+    -moz-transition: all 0.15s ease-out 0;
+    transition: all 0.45s ease-out 0;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: -400px;
+    -webkit-transition: all 0.9s ease-out 0;
+    -moz-transition: all 0.9s ease-out 0;
+    transition: all 0.9s ease-out 0;
+    width: 20rem;
+    padding: 1.5em;
+    background: #f1f1f1;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar li a {
+    color: #fff;
+    font-family: 'Poiret One', cursive;
+    font-size: 1.2em;
+    margin: 0;
+    margin-bottom: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    line-height: 200%;
+}
+
+.sidebar a:hover {
+    color: rgba(0, 0, 0, 0.61);
+}
+
+#slide:checked + .container .sidebar {
+    left: 0px;
+}
+
+#slide:checked + .container .toggle {
+    left: 200px;
+}
+
+
+#slide {
+    display: none;
+}
+
+/* Personal preference for BS modal.  The LESS below makes the backdrop white and
+   causes the modal to fade in rather than slide in. */
+//@modal-backdrop-bg: white;
+//.modal {
+//	&.fade {
+//		.transition(opacity .3s);
+//	}
+//	&.fade .modal-dialog {
+//		.translate(0,0);
+//	}
+//}
