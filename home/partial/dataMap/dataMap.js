@@ -1,6 +1,12 @@
 angular.module('home').controller('DatamapCtrl',function($scope,endpoints){
 
+    //Point locations
     $scope.GSLs = endpoints.getGasStationLocations();
+
+    $scope.ESLs = endpoints.getEVStationLocations();
+
+
+    //Shape locations and densities
 
     $scope.GSLs.$promise.then(function(r) {
         console.log($scope.GSLs);
