@@ -4,6 +4,7 @@ var cors = require('cors');
 var app = express();
 var PORT = 3000;
 
+//CORS Allow All
 app.use(cors());
 
 //GET Data
@@ -17,10 +18,8 @@ app.get('/gas_station_locations', function (req, res) {
                 lat: array[i].split(" ")[0] === undefined ? "" : array[i].split(" ")[0].trim(),
                 long: array[i].split(" ")[1] === undefined ? "" : array[i].split(" ")[1].trim()
             };
-            // json[i] = object;
-            json.push(object)
+            json.push(object);
         }
-        // delete json[array.length-1];
         res.json(json);
     });
 });
@@ -35,10 +34,8 @@ app.get('/ev_station_locations', function (req, res) {
                 lat: array[i].split(" ")[0] === undefined ? "" : array[i].split(" ")[0].trim(),
                 long: array[i].split(" ")[1] === undefined ? "" : array[i].split(" ")[1].trim()
             };
-            // json[i] = object;
-            json.push(object)
+            json.push(object);
         }
-        // delete json[array.length-1];
         res.json(json);
     });
 });
@@ -53,16 +50,16 @@ app.get('/existing_charging_stations', function (req, res) {
                 lat: array[i].split(" ")[0] === undefined ? "" : array[i].split(" ")[0].trim(),
                 long: array[i].split(" ")[1] === undefined ? "" : array[i].split(" ")[1].trim()
             };
-            // json[i] = object;
-            json.push(object)
+            json.push(object);
         }
-        // delete json[array.length-1];
         res.json(json);
     });
 });
 
 //POST & PUT data
 
+
+//Server
 app.listen(PORT, function () {
-    console.log('Rest service running at port ' + PORT + ".")
-})
+    console.log('Rest service running at port ' + PORT + ".");
+});

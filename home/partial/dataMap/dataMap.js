@@ -5,13 +5,10 @@ angular.module('home').controller('DatamapCtrl',function($scope,endpoints){
 
     $scope.ESLs = endpoints.getEVStationLocations();
 
+    $scope.ECSs = endpoints.getExistingChargingStations();
 
-    //Shape locations and densities
 
-    $scope.GSLs.$promise.then(function(r) {
-        console.log($scope.GSLs);
-    });
-    const NUM_ALLOWED_DATA_POINTS = 4;
+    var NUM_ALLOWED_DATA_POINTS = 4;
     var numDataPointsActive = 0;
     var currentDataPoint = 0;
     var dataPointHash = [];
@@ -34,7 +31,7 @@ angular.module('home').controller('DatamapCtrl',function($scope,endpoints){
         } else {
             removeActiveDataPoint(dataPoint);
         }
-    }
+    };
 
     var addActiveDataPoint = function (newDataPoint) {
         if (currentDataPoint > (NUM_ALLOWED_DATA_POINTS - 1)) {

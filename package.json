@@ -29,6 +29,7 @@
   "dependencies": {
     "cors": "^2.8.1",
     "express": "^4.14.1",
-    "fs": "0.0.1-security"
+    "fs": "0.0.1-security",
+    "grunt-forever": "^0.4.7"
   }
 }
