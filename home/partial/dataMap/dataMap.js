@@ -8,10 +8,17 @@ angular.module('home').controller('DatamapCtrl',function($scope,endpoints){
     $scope.ECSs = endpoints.getExistingChargingStations();
 
 
-    var NUM_ALLOWED_DATA_POINTS = 4;
+    const NUM_ALLOWED_DATA_POINTS = 4;
+    const centralCoordinates = {
+        lat: "42.276238",
+        long: "-83.741310"
+    };
     var numDataPointsActive = 0;
     var currentDataPoint = 0;
     var dataPointHash = [];
+
+    $scope.img_url = 'https://maps.googleapis.com/maps/api/streetview?size=1000x500&location=' +  centralCoordinates.lat + ',' + centralCoordinates.long +'&heading=151.78&pitch=-0.76&key=AIzaSyApzRBeT_oR34kOUhGy275z4G6a6kLSwgQ';
+
 
 
     $scope.mapCheckBoxes = {
