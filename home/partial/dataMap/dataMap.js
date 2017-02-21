@@ -8,6 +8,7 @@ angular.module('home').controller('DatamapCtrl',function($scope,endpoints){
     $scope.ECSs = endpoints.getExistingChargingStations();
 
 
+
     const NUM_ALLOWED_DATA_POINTS = 4;
     const centralCoordinates = {
         lat: "42.276238",
@@ -19,7 +20,25 @@ angular.module('home').controller('DatamapCtrl',function($scope,endpoints){
 
     $scope.img_url = 'https://maps.googleapis.com/maps/api/streetview?size=1000x500&location=' +  centralCoordinates.lat + ',' + centralCoordinates.long +'&heading=151.78&pitch=-0.76&key=AIzaSyApzRBeT_oR34kOUhGy275z4G6a6kLSwgQ';
 
-
+    angular.extend($scope, {
+        osloCenter: {
+            lat: 59.91,
+            lng: 10.75,
+            zoom: 12
+        },
+        markers: {
+            osloMarker: {
+                lat: 59.91,
+                lng: 10.75,
+                message: "I want to travel here!",
+                focus: true,
+                draggable: false
+            }
+        },
+        defaults: {
+            scrollWheelZoom: false
+        }
+    });
 
     $scope.mapCheckBoxes = {
         commute_routes : false,
@@ -66,3 +85,5 @@ angular.module('home').controller('DatamapCtrl',function($scope,endpoints){
         numDataPointsActive--;
     };
 });
+
+

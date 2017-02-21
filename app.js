@@ -1,4 +1,4 @@
-angular.module('smartCityUi', ['ui.bootstrap', 'ngRoute', 'ngAnimate','home','ngResource']);
+angular.module('smartCityUi', ['ui.bootstrap', 'ngRoute', 'ngAnimate','home','ngResource','nemLogging','ui-leaflet']);
 
 angular.module('smartCityUi').config(function($routeProvider) {
 
