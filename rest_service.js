@@ -15,8 +15,8 @@ app.get('/gas_station_locations', function (req, res) {
         var json = [];
         for (var i = 0; i<array.length; i++){
             var object = {
-                lat: array[i].split(" ")[0] === undefined ? "" : array[i].split(" ")[0].trim(),
-                long: array[i].split(" ")[1] === undefined ? "" : array[i].split(" ")[1].trim()
+                lat: array[i].split(" ")[0] === undefined ? "" : parseFloat(array[i].split(" ")[0].trim()),
+                long: array[i].split(" ")[1] === undefined ? "" : parseFloat(array[i].split(" ")[1].trim())
             };
             json.push(object);
         }

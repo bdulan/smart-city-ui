@@ -4,14 +4,14 @@
     </div>
     <br>
     <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#charging_stations">Charging Stations</a></li>
+        <li id="CS"class="active"><a data-toggle="tab" href="#charging_stations">Charging Stations</a></li>
         <li><a data-toggle="tab" href="#realtime_demand">Realtime Demand</a></li>
         <li><a data-toggle="tab" href="#emissions_utilities">Emissions and Utilities</a></li>
     </ul>
 
     <div class="tab-content">
         <div id="charging_stations" class="tab-pane fade in active">
-            <div class="col-md-8">
+            <div class="col-md-8 hidden">
                 <div class="col-md-3">
                     <input type="checkbox" ng-click="changeDataPointModel('commute_routes')" ng-model="mapCheckBoxes.commute_routes">&nbsp;Commute Routes
                 </div>
@@ -37,12 +37,12 @@
                     <input type="checkbox" ng-click="changeDataPointModel('sugg_char_station_location')" ng-model="mapCheckBoxes.sugg_char_station_location">&nbsp; Suggested Charging Station Locations
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 hidden">
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation"><a href="#realtime" aria-controls="#realtime" role="tab" data-toggle="tab">Realtime</a></li>
                     <li role="presentation"><a href="#future" aria-controls="#future" role="tab" data-toggle="tab">Future</a></li>
                 </ul>
-                <div class="tab-content">
+                <div class="tab-content ">
                     <div role="tabpanel" class="tab-pane fade in active" id="realtime">
                         <div class="col-md-5">
                             <input type="radio" value=""> &nbsp; Work Week
@@ -84,11 +84,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12" style="margin-top: 10px;">
+            <div id="map_container" class="col-md-12" style="margin-top: 10px;">
                 <div id="mapid" style="height: 500px;"></div>
-                <!--<leaflet id="map-marker" markers="markers" center="osloCenter"></leaflet>-->
-
-                <!--<img src="../../../assets/images/u2.jpg" width="100%">-->
+            </div>
+            <div class="row">
+                <ul class="legend">
+                    <li><span class="gas_station_locations"></span> Gas Station Locations</li>
+                    <li><span class="awesome"></span> EV Station Locations</li>
+                    <!--<li><span class="kindaawesome"></span> Kinda Awesome</li>-->
+                    <!--<li><span class="notawesome"></span> Not Awesome</li>-->
+                </ul>
             </div>
         </div>
         <div id="realtime_demand" class="tab-pane fade">
