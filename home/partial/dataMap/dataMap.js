@@ -26,9 +26,13 @@ angular.module('home').controller('DatamapCtrl',function($scope,endpoints){
         var currentDataPoint = 0;
         var dataPointHash = [];
 
-        $scope.gas_station_locations = true;
 
-        var greenIcon = L.icon({
+
+        $scope.gas_station_locations = true;
+        $scope.EV_station_locations = true;
+
+
+        var gsIcon = L.icon({
             iconUrl: '../../../assets/images/1381989347.png',
             shadowUrl: '../../../assets/images/1381989347.png',
 
@@ -39,12 +43,28 @@ angular.module('home').controller('DatamapCtrl',function($scope,endpoints){
             popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
         });
 
+        var evIcon = L.icon({
+            iconUrl: '../../../assets/images/1381989348.png',
+            shadowUrl: '../../../assets/images/1381989348.png',
+
+            iconSize:     [35, 35], // size of the icon
+            shadowSize:   [50, 64], // size of the shadow
+            iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+            shadowAnchor: [4, 62],  // the same for the shadow
+            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+        });
+
         var GSLayer = [];
         for (var i = 0; i <$scope.GSLs.length-1; i++){
-           // GSLayer.push(L.circle([parseFloat($scope.GSLs[i].lat), parseFloat($scope.GSLs[i].long)], 80, {"color": "#0000ff"}));
-           GSLayer.push(L.marker([parseFloat($scope.GSLs[i].lat), parseFloat($scope.GSLs[i].long)],{icon: greenIcon}));
+           GSLayer.push(L.marker([parseFloat($scope.GSLs[i].lat), parseFloat($scope.GSLs[i].long)],{icon: gsIcon}));
         }
         var gasStations = L.layerGroup(GSLayer);
+
+        var ESLayer = [];
+        for (var i = 0; i <$scope.ESLs.length-1; i++){
+            ESLayer.push(L.marker([parseFloat($scope.ESLs[i].lat), parseFloat($scope.ESLs[i].long)],{icon: evIcon}));
+        }
+        var EVstations = L.layerGroup(ESLayer);
 
         var grayscale = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmR1bGFuIiwiYSI6ImNpemZzOTYyYTAwbncycW5ueWYyaHkyeTkifQ.Iotxd_KBWcont6Hggmal1g', {
             id: 'mapid',
@@ -54,7 +74,7 @@ angular.module('home').controller('DatamapCtrl',function($scope,endpoints){
         var map = L.map('mapid', {
             center: [centralCoordinates.lat, centralCoordinates.long],
             zoom: 13,
-            layers: [grayscale, gasStations]
+            layers: [grayscale, gasStations, EVstations]
         });
 
         var baseMaps = {
@@ -62,17 +82,10 @@ angular.module('home').controller('DatamapCtrl',function($scope,endpoints){
         };
 
         var overlayMaps = {
-            "Cities" : gasStations
+            "Cities" : [gasStations,EVstations],
         };
 
         L.control.layers(baseMaps, overlayMaps).addTo(map);
-
-        // setTimeout(function () {
-        //     map.removeLayer(gasStations);
-        //     setTimeout(function () {
-        //         map.addLayer(gasStations)
-        //     },3000)
-        // },10000)
 
 /*
 
@@ -85,7 +98,6 @@ angular.module('home').controller('DatamapCtrl',function($scope,endpoints){
         }).addTo(mymap);
 
         var marker = L.marker([centralCoordinates.lat, centralCoordinates.long]).addTo(mymap);
-        var center = L.circle([centralCoordinates.lat, centralCoordinates.long], 200, {"color": "#FF5500"}).addTo(mymap);
         var layerGroupPrime = L.layerGroup([center])
 
 
@@ -97,6 +109,13 @@ angular.module('home').controller('DatamapCtrl',function($scope,endpoints){
                 map.addLayer(gasStations)
             } else {
                 map.removeLayer(gasStations)
+            }
+        }
+        $scope.ToggleDataPointView1 = function(dataPoint){
+            if ($scope.EV_station_locations == true){
+                map.addLayer(EVstations)
+            } else {
+                map.removeLayer(EVstations)
             }
         }
 

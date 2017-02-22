@@ -12,7 +12,10 @@
     <div class="tab-content">
         <div id="charging_stations" class="tab-pane fade in active">
             <div class="col-md-3">
-                <input type="checkbox" ng-click="ToggleDataPointView('gas_station_locations')" ng-model="gas_station_locations">&nbsp;Commute Routes
+                <input type="checkbox" ng-click="ToggleDataPointView('gas_station_locations')" ng-model="gas_station_locations">&nbsp;Gas Station Locations
+            </div>
+            <div class="col-md-3">
+                <input type="checkbox" ng-click="ToggleDataPointView1('EV_station_locations')" ng-model="EV_station_locations">&nbsp;EV Station Locations
             </div>
             <div class="col-md-8 hidden">
                 <div class="col-md-3">
