@@ -26,18 +26,25 @@ angular.module('home').controller('DatamapCtrl',function($scope,endpoints){
         var currentDataPoint = 0;
         var dataPointHash = [];
 
-        var littleton = L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.'),
-            denver    = L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.'),
-            aurora    = L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.'),
-            golden    = L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.');
+        $scope.gas_station_locations = true;
+
+        var greenIcon = L.icon({
+            iconUrl: '../../../assets/images/1381989347.png',
+            shadowUrl: '../../../assets/images/1381989347.png',
+
+            iconSize:     [30, 30], // size of the icon
+            shadowSize:   [50, 64], // size of the shadow
+            iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+            shadowAnchor: [4, 62],  // the same for the shadow
+            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+        });
 
         var GSLayer = [];
         for (var i = 0; i <$scope.GSLs.length-1; i++){
-           GSLayer.push(L.circle([parseFloat($scope.GSLs[i].lat), parseFloat($scope.GSLs[i].long)], 80, {"color": "#0000ff"}));
+           // GSLayer.push(L.circle([parseFloat($scope.GSLs[i].lat), parseFloat($scope.GSLs[i].long)], 80, {"color": "#0000ff"}));
+           GSLayer.push(L.marker([parseFloat($scope.GSLs[i].lat), parseFloat($scope.GSLs[i].long)],{icon: greenIcon}));
         }
         var gasStations = L.layerGroup(GSLayer);
-
-        var cities = L.layerGroup([littleton, denver, aurora, golden]);
 
         var grayscale = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmR1bGFuIiwiYSI6ImNpemZzOTYyYTAwbncycW5ueWYyaHkyeTkifQ.Iotxd_KBWcont6Hggmal1g', {
             id: 'mapid',
@@ -45,9 +52,9 @@ angular.module('home').controller('DatamapCtrl',function($scope,endpoints){
         });
 
         var map = L.map('mapid', {
-            center: [39.73, -104.99],
-            zoom: 10,
-            layers: [grayscale, cities, gasStations]
+            center: [centralCoordinates.lat, centralCoordinates.long],
+            zoom: 13,
+            layers: [grayscale, gasStations]
         });
 
         var baseMaps = {
@@ -55,15 +62,17 @@ angular.module('home').controller('DatamapCtrl',function($scope,endpoints){
         };
 
         var overlayMaps = {
-            "Cities": cities,
-            "Gas_Stations" : gasStations
+            "Cities" : gasStations
         };
 
         L.control.layers(baseMaps, overlayMaps).addTo(map);
 
-        setTimeout(function () {
-            // map.removeLayer(cities);
-        },10000)
+        // setTimeout(function () {
+        //     map.removeLayer(gasStations);
+        //     setTimeout(function () {
+        //         map.addLayer(gasStations)
+        //     },3000)
+        // },10000)
 
 /*
 
@@ -81,8 +90,15 @@ angular.module('home').controller('DatamapCtrl',function($scope,endpoints){
 
 
 
-*/
 
+*/
+        $scope.ToggleDataPointView = function(dataPoint){
+            if ($scope.gas_station_locations == true){
+                map.addLayer(gasStations)
+            } else {
+                map.removeLayer(gasStations)
+            }
+        }
 
         $scope.changeDataPointModel = function (dataPoint) {
             if ($scope.mapCheckBoxes[dataPoint] === true){

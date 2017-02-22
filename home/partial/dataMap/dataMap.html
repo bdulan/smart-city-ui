@@ -11,6 +11,9 @@
 
     <div class="tab-content">
         <div id="charging_stations" class="tab-pane fade in active">
+            <div class="col-md-3">
+                <input type="checkbox" ng-click="ToggleDataPointView('gas_station_locations')" ng-model="gas_station_locations">&nbsp;Commute Routes
+            </div>
             <div class="col-md-8 hidden">
                 <div class="col-md-3">
                     <input type="checkbox" ng-click="changeDataPointModel('commute_routes')" ng-model="mapCheckBoxes.commute_routes">&nbsp;Commute Routes

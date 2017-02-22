@@ -9,7 +9,6 @@ app.use(cors());
 
 //GET Data
 app.get('/gas_station_locations', function (req, res) {
-// app.get('/', function (req, res) {
     fs.readFile('./assets/data/gas_station_locations.txt', function(err, f){
         var array = f.toString().split('\n');
         var json = [];
@@ -25,7 +24,6 @@ app.get('/gas_station_locations', function (req, res) {
 });
 
 app.get('/ev_station_locations', function (req, res) {
-// app.get('/', function (req, res) {
     fs.readFile('./assets/data/EV_station_locations.txt', function(err, f){
         var array = f.toString().split('\n');
         var json = [];
